@@ -1,6 +1,15 @@
-title = "A test tasks dictionary"
-start_day = 2024-01-01
+# This is an example of TOML define tasks dictionary
+title = "A test tasks dictionary"  # The name of the tasks collection
+start_day = 2024-01-01  # The start day of the project
+deadline=2025-01-01	# The day all must be done (can be undefined)
+# Some general notes about the project
 notes = "This is a test tasks TOML file used to check the functionality of the tomltasks class implemented in tomlgantt.py. It is also intended to show all the implemented features."
+# It is sometimes useful to have shortnames instead of complete names, expecially for assignees.
+# Here you can define shortname for each possible entry of a task.
+[shortnames]	
+assignee."A" = "Alice"
+assignee."B" = "Bob"
+assignee."C" = "Charlie"
 
 [group_1]
 g_name="Group 1"
@@ -9,11 +18,12 @@ notes="Notes about the group of tasks."
 g_name="Subgroup 1.1"
 notes="Those are notes associated to the subgroup."
 task_1 = {name="task 1", duration="2 weeks", assignee="Alice", notes="A task is any dictionary in the tree having a name and a duration/due date."}
-task_2 = {name="task 2", due=2024-09-01, assignee="Bob", notes="In this case the duration is not specified, but a date due to the task need to be completed is given."}
+task_2 = {name="task 2", due=2024-03-01, assignee="Bob", notes="In this case the duration is not specified, but a date due to the task need to be completed is given."}
 [subgruop_1-2]
 g_name="Subgroup 1.2"
 task_3 = {name="task 3", duration="2 weeks", assignee="Alice", deps=["task_1"], notes="Tasks can have a dependance to another, regulating the start day."}
-task_4 = {name="task 4", due=2024-09-01, assignee="Bob"}
+task_4 = {name="task 4", due=2024-06-01, assignee="Bob"}
+
 [group_2]
 task_g2={name="task group 2", duration="1 month", assignee="Charlie", notes="A task can be placed anywhere in the tree."}
 [subgruop_2-1]
@@ -23,4 +33,4 @@ task_4 = {name="task 6", due=2024-09-01, assignee="Bob"}
 [subgruop_2-2]
 g_name="Subgroup 2.2"
 task_3 = {name="task 7", duration="2 weeks", assignee="Alice"}
-task_4 = {name="task 8", due=2024-09-01, assignee="Bob"}
+task_4 = {name="task 8", due=2024-12-01, assignee="Bob"}
