@@ -11,26 +11,37 @@ assignee."A" = "Alice"
 assignee."B" = "Bob"
 assignee."C" = "Charlie"
 
+# It is considered task any dictionary containing a name.
+# Once a named entry is found, the code look for other entryes:
+#	- name: The name of the task shown in the plots
+#	- duration: can be expressed in days, weeks, months or years
+#	- due: date at which the task need to be completed
+#	- assignee: a list of people that are supposed to work on the task
+#	- deps: list of tasks that need to be completed before
+#	- notes: Short notes about the tasks that might be useful
+
+# A first group of tasks
 [group_1]
 g_name="Group 1"
 notes="Notes about the group of tasks."
+task_g1={name="Task group 1", duration="1 month", assignee="Charlie", notes="A task can be placed anywhere in the tree."}
 [subgruop_1-1]
-g_name="Subgroup 1.1"
 notes="Those are notes associated to the subgroup."
 task_1 = {name="task 1", duration="2 weeks", assignee="Alice", notes="A task is any dictionary in the tree having a name and a duration/due date."}
 task_2 = {name="task 2", due=2024-03-01, assignee="Bob", notes="In this case the duration is not specified, but a date due to the task need to be completed is given."}
 [subgruop_1-2]
-g_name="Subgroup 1.2"
 task_3 = {name="task 3", duration="2 weeks", assignee="Alice", deps=["task_1"], notes="Tasks can have a dependance to another, regulating the start day."}
 task_4 = {name="task 4", due=2024-06-01, assignee="Bob"}
 
+# Another group of tasks
 [group_2]
-task_g2={name="task group 2", duration="1 month", assignee="Charlie", notes="A task can be placed anywhere in the tree."}
+g_name="Group 2"
+task_g2={name="task group 2", duration="auto", assignee="C", notes="If set tho auto, the task duration accommodate all the group elements."}
 [subgruop_2-1]
 g_name="Subgroup 2.1"
-task_3 = {name="task 5", duration="2 weeks", assignee="Alice", milestone=true, notes="A task can be marked as milestone."}
-task_4 = {name="task 6", due=2024-09-01, assignee="Bob"}
+task_3 = {name="task 5", duration="2 weeks", assignee="A", milestone=true, notes="A task can be marked as milestone."}
+task_4 = {name="task 6", due=2024-09-01, assignee="B"}
 [subgruop_2-2]
 g_name="Subgroup 2.2"
-task_3 = {name="task 7", duration="2 weeks", assignee="Alice"}
-task_4 = {name="task 8", due=2024-12-01, assignee="Bob"}
+task_3 = {name="task 7", duration="2 weeks", assignee="A"}
+task_4 = {name="task 8", due=2024-12-01, assignee="B"}
